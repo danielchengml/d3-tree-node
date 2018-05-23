@@ -1,9 +1,11 @@
 # D3 Data Visualisation (with React)
 
 A react application to visualise a tree node. A demo version can be found here: https://codesandbox.io/s/6w5jlwo8vw
-<img src="./img/app.PNG" height="250">
+
+<img src="./img/app.PNG" height="350">
 
 ## Installation
+
 To start the application, run the following commands:
 
 ```
@@ -12,6 +14,7 @@ To start the application, run the following commands:
 > npm i
 > npm start
 ```
+
 The application will now be running on `localhost:3000`
 
 ## Built With
