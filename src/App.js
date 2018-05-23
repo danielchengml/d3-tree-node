@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import "./App.css";
+import * as d3 from "d3";
+import Tree from "react-d3-tree";
 import data from "./data";
+import CenteredTree from "./CenteredTree";
 
 class App extends Component {
   state = {
-    treeData: []
+    name: "root",
+    children: []
   };
 
   componentDidMount() {
-    this.createTree();
+    this.sortData();
   }
 
-  createTree() {
+  sortData() {
+    const treeData = [];
     // flatten to object with string keys that can be easily ref'd later
     const dataMap = data.reduce((map, node) => {
       map[node.id] = node;
@@ -29,18 +34,22 @@ class App extends Component {
         // replace the child id with an object
         parent.children.push(node);
       } else {
-        this.state.treeData.push(node);
+        treeData.push(node);
       }
     });
+    this.setState({ children: treeData });
   }
 
   render() {
+    const treeData = [this.state];
     return (
       <div className="App">
         <header className="App-header">
           <h2 className="App-title">Tree Node</h2>
         </header>
-        <svg ref={node => (this.node = node)} width={500} height={500} />
+        <div id="treeWrapper">
+          <CenteredTree root={this.state} />
+        </div>
       </div>
     );
   }
