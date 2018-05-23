@@ -1,13 +1,32 @@
 import React, { Component } from "react";
 import "./App.css";
-import * as d3 from "d3";
-import Tree from "react-d3-tree";
 import data from "./data";
 import CenteredTree from "./CenteredTree";
 
+const parentNode = {
+  shape: "circle",
+  shapeProps: {
+    r: 10,
+    fill: "#4fa1ff",
+    stroke: "#c4c4c4",
+    strokeWidth: "1px"
+  }
+};
+
+const childNode = {
+  shape: "circle",
+  shapeProps: {
+    r: 10,
+    fill: "#bcdbff",
+    stroke: "#c4c4c4",
+    strokeWidth: "1px"
+  }
+};
+
 class App extends Component {
   state = {
-    name: "root",
+    name: "",
+    nodeSvgShape: parentNode,
     children: []
   };
 
@@ -19,6 +38,11 @@ class App extends Component {
     const treeData = [];
     // flatten to object with string keys that can be easily ref'd later
     const dataMap = data.reduce((map, node) => {
+      if (node.children.length > 0) {
+        node.nodeSvgShape = parentNode;
+      } else {
+        node.nodeSvgShape = childNode;
+      }
       map[node.id] = node;
       return map;
     }, {});
@@ -41,7 +65,6 @@ class App extends Component {
   }
 
   render() {
-    const treeData = [this.state];
     return (
       <div className="App">
         <header className="App-header">

@@ -21,6 +21,13 @@ class CenteredTree extends Component {
 
   render() {
     const { root } = this.props;
+    const linkStyles = {
+      links: {
+        fill: "none",
+        stroke: "#ccc",
+        strokeWidth: "2px"
+      }
+    };
     console.log(root);
     return (
       <div style={containerStyles} ref={tc => (this.treeContainer = tc)}>
@@ -34,6 +41,7 @@ class CenteredTree extends Component {
           scaleExtent={{ min: 1.0, max: 2.0 }}
           depthFactor={300.0}
           initialDepth={1.2}
+          styles={linkStyles}
         />
       </div>
     );
