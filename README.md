@@ -2,7 +2,7 @@
 
 A react application to visualise a tree node. A demo version can be found here: https://codesandbox.io/s/6w5jlwo8vw
 
-<img src="./img/app.PNG" height="350">
+<img src="./img/app.PNG" height="450">
 
 ## Installation
 
